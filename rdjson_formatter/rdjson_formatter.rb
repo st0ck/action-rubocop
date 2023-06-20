@@ -54,7 +54,8 @@ class RdjsonFormatter < RuboCop::Formatter::BaseFormatter
   # @param [RuboCop::Cop::Offense] offense
   # @return [Hash]
   def build_diagnostic(file, offense)
-    code, message = offense.message.split(':', 2).map(&:strip)
+    range = offense.location
+    text = offense.message
 
     diagnostic = {
       message: message,
